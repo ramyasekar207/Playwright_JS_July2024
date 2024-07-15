@@ -1,0 +1,10 @@
+JavaScript : Web language
+* Client side programming language
+* Browser validations
+* Asynchronus programming knowledge
+* Event drivern architecture
+* Non blocking IO ==> Interactive with dynamic page loading
+
+
+Synchronus ==> For each request , we will get the response then the another request will get processed, this process is called synchronous
+Asynchronous ==> .java
