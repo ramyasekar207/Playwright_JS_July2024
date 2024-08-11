@@ -1,0 +1,74 @@
+Week5 : Day 9
+=============
+📌 Alerts/Dialogs
+=> we have to handle alert to proceed with the 
+further actions on the page
+=> all alerts are from the application which is written in the JS
+=> We cannot inspect the alert
+
+Types of Alerts:
+1. Modal dialog ==> all these modal dialogs are not inspecable
+ 1.1. Simple alert ==> We have only action we can perform eg, message and 'ok' button.
+ 1.2. Confirm alert
+   => We have a message along with action of 'Ok' and 'Cancel' 
+   => We can either accept or decline it
+ 1.3. prompt alert
+   => We have a message with textbox along with 'ok' & 'cancel' option.
+   => Enter the input and accept it.
+   => or we can cancel it.
+ 1.4. beforeUnload alert
+   => a message + leave/Stay
+   => Accept or dismiss the alert
+2. Non-modal dialog
+ 2.1. sweet alert: 
+  => Can be inspected
+  => even if it inspected, we have to handle it to proceed with the further 
+      action to perfomr in the webpage.
+
+Methods to interat with dialog
+1. accept("<string>") : to accept the dialog
+2. dismiss() : to cancel the alert
+3. message() : returns the message displayed in the dialog
+4. type() : returns the what type of alert it is?
+    if(dialog.type() === "confirm"){
+    dialog.accept();
+    }
+5. defaultValue() : retrn the default value present in prompt dialog
+     
+📌 iFrames : 
+    Frames are a section where we can embed some other photos or location or videos 
+      or banners or ads we can used to display on the web page
+      **Inline Frame also called iframe in web page
+      **HTML page(iframe) embeded into the main HTML page.
+      **Support multimedia contents - videos, ad, weather, location
+
+Methods to access iframe:
+ 1. By Id
+ 2. By URL
+ 3. By index
+
+=> page.frame 
+    ==> Simple and straignt forward scenarios
+=> page.frameLocator  
+    ==> for complex scenarios/Nested Frames
+    ==> Support chaining operations
+        page.framelocator("frame1").("frame2").click()
+    
+
+ 
+📌For Of loop
+===============
+   for(let element of elements){
+   }
+
+📌Non-null assertion operator
+=============================
+frame!.click("")
+
+
+📌 Multiple Windows/Tabs
+📌 Shadow DOM
+📌 File Upload
+📌 File Download
+
+

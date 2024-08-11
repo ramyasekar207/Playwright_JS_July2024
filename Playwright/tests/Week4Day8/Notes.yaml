@@ -1,0 +1,89 @@
+01. Select Dropdown
+Eg:
+<Select>
+  <option value = ""> Visible text</option>
+
+  SelectOptions method
+  => Index ==>
+  await page.selectOption("#createLeadForm_currencyUomId",{index:13});
+  => Options's value ==>
+  await page.selectOption("#createLeadForm_dataSourceId",{value:"LEAD_DIRECTMAIL"});
+  => Label ==>
+  await page.selectOption("#createLeadForm_generalCountryGeoId",{label:"India"})
+
+  LeafTaps application : Source dropdown in create lead screen
+//Locate the dropdown by value
+await page.selectOption()
+
+****************************
+Interview Question:
+How to get all values in the dropdown
+and print the total count in dropdown
+
+***
+//Get Count of the dropdown value
+    const dd = page.locator('#createLeadForm_dataSourceId>option');
+    const dd_count = await dd.count();
+    console.log(`Total no of count : ${dd_count}`);
+    for (let index = 0; index < dd_count; index++) {
+        console.log(await dd.nth(index).innerText); 
+    }
+
+******************************
+02.nth index in locator
+eg:
+await page.locator("input[class='inputBox']").nth(0).fill("<value>");
+==> This will locate the first match as index is defined as '0'(Zero).
+
+******************************
+03. Auto Waiting:
+Actionability checks
+ => Visibility
+ => Stability
+ => receive events
+ => Enabled
+ => Editable
+
+ page.waitFor<>;
+
+ **************************
+ 04.Assertions:
+   => Generic assertions == asserting values in the tests
+      ** toBe, toEqual, toBeGreaterThan, toContain, toContainEqual
+   => Locator Assertions == dependes on the locators assertion
+      ** Methods ==> toBeVisible, toBeEnabled, toBeHidden, toHaveAttribute
+   => Page Assertion == based on the page (title , url of the page)
+      ** toHaveScreenshot, toHaveTitle, toHaveURL
+   => Snapshot assertion (Learn on Framework class)
+   => API Reference Assertion (Api classes)
+
+       ==> Auto-retry Assertion
+        ** Retrying machanism: 
+          * 5s - default timeout for assertion
+          * expect library has all the expect functions
+       ==> Non-retry
+        ** which do not have the auto retrying mechanism
+          * static text verification
+    
+    ** Hard Assertion : if the assertions is failed, the test execution s stoped immediately
+    ** Soft Assertion : is the assertion is failed, it will not sop the execution, the test will continue.
+  
+  **************************
+
+    **Negating matchers (not operator)
+     expect(title).not.toBe("amazon.com")
+     eg: await expect (page.locaor(<locator>)).not.toBeVisible();
+
+********************************
+05. Configuration ::
+
+playwright.config.ts
+
+// Only for CICD pipeline
+forbidOnly: it will not include the test.only file in your testsuit
+
+forbidOnly:!!process.env.CI
+
+forbidOnly - falsy - 0
+!falsy - true
+!!falsy - false(boolean)

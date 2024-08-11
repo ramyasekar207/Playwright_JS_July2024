@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../../../../Playwright_July2024_Assignment"
+		},
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../Playwright_TS"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Playwright_JS_July2024"
+	}
+}
