@@ -1,0 +1,45 @@
+📌 Reading Data from (.env file, .json file, .csv files)
+  📌 .env file
+    * install the command 'npm install dotenv' on the root folder
+    * create a .env file under the root folder
+    * Store all the user details within the folder
+    * In testcase, import the dotenv module
+    * By using the variable we are accessing it.
+
+    => env within the folder
+
+    to run the specific environment 
+    in terminal >> $env:NODE_ENV = "testing"
+    then run ur test command 'npx playwright test <>'
+  
+    📌 Reading data from JSON file
+    * 
+    
+    📌 Reading data from CSV file
+      --> npm install csv-parse
+    
+    📌 Reading data from Excel file code , Rajini will 
+      provide during Framework class
+
+📌 Storage state (Skip Login)
+    Store the data into a json file , by using the file we are skipping the login 
+
+📌 Shadow DOM:
+    encapsulated component : 
+    Shadow DOM is isolated from the main DOM.
+    * xpath will not identified by playwright
+    * we can use textlegacy, css, getByText locator
+
+    => Playwright can pierce/cut the shadow root and interact with the element.
+    => Playwright does not support X-path present inside the shadow roots.
+ 
+📌 Persistent context
+  * By using the persistent context , we store the data cache.
+
+📌 Test suite Structure
+📌 Trace Viewer & Video Capture
+
+
+ScreenToast :
+//Command
+setTimeout(function(){debugger;},5000);

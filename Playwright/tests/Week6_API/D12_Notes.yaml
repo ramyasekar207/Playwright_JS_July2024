@@ -1,0 +1,66 @@
+📌 Implementation in Postman - POST & GET Lead With Global Variable
+    Step 1: Extract the access token from OAuth API response and save it as a global variable.
+    Step 2: Pass the global variable in authorization headers of all API.
+
+    Setup : Postman >> Environments >>Globals
+
+📌 Steps to set the global value: Goto to PM > Generate OAuth Token file > Scripts > Follow the below steps
+ * Save the response in a variable
+    var resp=pm.response.json();
+ * From the response variable extract the access token
+    var accessToken=resp.access_token;
+ * Save the access token in a global variable
+    pm.globals.set("Access_Token_Key", accessToken)
+
+
+📌 APIRequest, APIRequestContext, APIResponse
+    APIRequest : 
+      * API Request is used to send http requests for testing web API.
+      * apiRequest = playwright.request;
+
+    APIRequestContext :
+      * Each browsercontext has an associated APIRequestContext instance
+      * apiRequestContext = browserContext.request;
+
+    APIResponse : 
+      * apiResponse.status()
+      * statusText()
+      * headers()
+      * ok()
+      * json()
+      * text()
+      * body()
+      * url()
+
+📌 Playwright code : Without fixtures
+      const browser = await chromium.launh()
+      const browserContext = await browser.newContext();
+      const apiRequestContext = browserContext.request; //request is a property not a method.
+
+      const page = await browserContext.newPage();
+      const apiPageRequest = page.request;
+
+ 📌 Playwright code : With fixtures   
+    * we have page and request fixtures
+    {page,request}
+
+📌 Status Code, Response Body & Response Time
+   * Response Time capture : we have lot more function to capure it
+      * Date.now
+      * perfomance.now
+      * response.timing()
+      * axios
+
+📌 Creating a global variable
+
+📌 [Practice] Create Opportunity & Get Opportunity
+
+📌 POST call (Creating a lead)
+
+📌 GET call (Retrieving the lead)
+
+📌 DELETE call (Deleting the lead)
+
+📌 E2E Scenario (Bearer Token, Create, Update & Delete)
+
+

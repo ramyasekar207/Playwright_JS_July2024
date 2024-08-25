@@ -8,7 +8,6 @@ test(`01: Accept the alert in W3School page`, async({page})=>{
     if(dialog.message()==='Press a button!'){
     dialog.accept();
     console.log("Alert Accepted");
-    
     }
     })
 

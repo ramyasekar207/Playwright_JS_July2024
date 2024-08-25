@@ -1,0 +1,203 @@
+📌 Introduction to REST API
+    API - Application programming Interface
+    intermediate programe used to comminute between the 2 application
+    eg : API is used to comminucate between the amazon and razor (payment gateway)
+    for payment process.
+
+     API Architecture:
+     1. REST => Representational State transfer API (it support BDD framework)
+     2. GRAPHQL => Facebook developed GRAPHQL
+
+     Testing Tools:
+     1. PostMan => Collaboration plaform for API development.
+     2. RestAssured + Wiremock => Java DSL Framework for simplifying testing 
+                                  of REST based services
+     3. Swagger => Framework backed by a large ecosysem of tools for documentation
+     4. Karate => Tool to d API test automation mocks
+
+     Application under Test: 
+     1. ServiceNow => ITSM Application
+     2. JIRA => Project management application
+     3. Salesforce => CRM Application
+
+📌 Why API automation is growing in demand?
+    1. API based apps 
+    2. Faster => as there is no UI, it is much faster 
+    3. Easier & Isolated => Independent one
+    4. Data Generation => Very easier for bulk generation of data.
+    5. Less failures => 
+
+      API Architecture:
+      1. Monolithic 
+          => Tightly coupled each other, so if anyone is down the entire process will get affected.
+          structure : user interface => Business logic => Data acces layer <=> DB
+      2. Micro service 
+          => acts as independent api, it will not affect the action process if any one API is down
+          structure : userinterface <=> Microservice <=> DB
+        
+        Gmail -> Using Rest API
+        Instagram -> Social media application using GRAPHQL API
+
+*******************************
+SOAP vs REST vs GraphQL vs gRPC
+*******************************
+SOAP - Simple Object Access Protocol
+    * XML format
+    * GET, POST
+    * Higher payload
+    * No cache
+REST - Representational State Transfer
+  => is a software architectural style that defines a set of constraints to be used for creating web services
+    * suppots XML, JSON, TXT, HTML
+    * all HTTP methods, (GET, POST, DELETE, PUT, PATCH)
+    * Lower payload
+    * Stateless, Cache (No cache will be saved)
+GraphQL - Graphical Query Language
+  => is an open-source data query and manupulation language for APIs, and runtime for fulfilling queries with existing data.
+    * JSON
+    * Asynchronous
+    * HTTP, AMQP, MQTT
+    * Send only required data.
+gRPC - Google Remote Procedural Call
+  =>A nimble and lightweight system for requesting data.gRPC, on the other hand, 
+    is best used when a system required a set amount of data or processing routinelu
+     * Proto
+     * Asynchronous
+     * Highly scalable (useful for any social media application)
+     * Server communications 
+
+
+📌 Verbs (POST, PUT, GET, DELETE, PATCH) => Actions 
+    HTTP Methods(CRUD : Create/Read/Update/Delete) : Actions to be performed on a particular resource
+    =================
+    1.POST : send data to the server to create a new resource
+    2.GET : Retrieve a data from server
+    3.PUT : Update : Update the resource which is already present on the server
+    4.PATCH : Update : apply partial modification to the resource
+    5.DELETE : Delete a resource from server
+
+📌 Headers
+    ** Pass additional information about the request / response between the client and the server
+  Types of Headers:
+    1. Request Headers : from client side
+      * Content type : specify the format of the data (eg. HTML, Json, XML, image etc.,)
+      * Authorization : credential information
+      * Accept : format of the response that the client expects
+    2. Response Headers: include response from the server
+      * Content type : format of the data in the response body
+      * content lenght : lenght of the response body
+      * set cookie : cookie stored by the client for future requests.
+
+
+📌 Request Parameters : 
+      => it has key-value pairs
+    * Header param : usually related to authorization.
+    * Query param : can provide '?' at the end of the endpoint , we can provide our filter creteria on the url itself using '?' separator
+        ** https://dev225779.service-now.com/users?age=25&country=India
+    * Form param : parameters included in the request body. usually submitted as JSON.
+    * Path param : specific users : {}
+        ** https://dev225779.service-now.com/users/id/123456
+
+📌 Request Parameters : Data Types
+    * String :
+    * integer :
+    * boolean: 
+    * Object: Key -value pair
+    * Array :
+
+📌 Request Body : From the client to the server
+    Information which wanted to pass while creating a resource.
+
+📌 Response Body : From the server to the client
+    Form data : in Key-value format including multi-part
+    None: no data passed in body
+    Queries & Variables: specially for GraphQL scenarios
+    Form (URL Encoded) : data is encoded in key-value format
+    Raw data : Can be JSON/XML or TXT
+    Binary : The files or executables that can be attached
+
+📌 JSON 
+    * Javascript Object Notation
+    * Lightweight
+    * Easy to understand
+    * Not specific to languages
+
+    JSON Structure:
+    Simple JSON format 
+    {
+      "Name" : "Diya",
+      "Age" : 5,
+      "City" : "Chennai"
+    }
+
+    Simple JSON array 
+    {
+      "Name" : "Ramya",
+      "City" : "Chennai"
+      "Companies" : ["ADP", "BankOfAmerica", "RBS"]
+    }
+
+    JSON Nested Arrays
+    {
+      "Name" : "Ramya",
+      "City" : "Chennai"
+      "Companies" : [
+        {
+          "Name" : "ADP",
+          "Years" : 5,
+          "Role" : ["Manual Testing", "Automation Testing"]
+        },
+        {
+          "Name" : "RBS",
+          "Years" : 2,
+          "Role" : ["Automation Testing", "API Testing", "Playwright"]
+        }
+      ]
+    }
+
+📌Status Codes : (Refer TL provided documents)
+    100-199 : Information 
+    200-299 : Success
+    300-399 : Redirects
+    400-499 : Client Errors
+    500-599 : Server Errors
+
+
+📌 Authorization Types:
+  Authentication vs Authorization 
+   📌Authentication => Identify the person using their user credential
+   📌Authorization => Previleges of the logged in user has.
+      *No Authentication  : Eg. Weaher forecast, google map
+      *Basic : eg.ServiceNow, JIRA
+      *OAuth 2.0 : Payment Gateways, ServiceNow
+      * Token : Oracle WMS,/WT
+
+      Process : Authnticated by google => Google => Request => Spotify
+                                          Google <= Response <= Spotify
+                        Spotify is using oAuth token
+
+                                                Authentication          *          Application 
+                                                Server                  *           Server
+                                                                        *
+                 Authenticated by google   ===> Permission              *
+                                                to access spotify       *
+                                                                        *
+                                           <===Token generated          *    
+
+                                               ===========================>>>Request to listen to music
+
+                                                                             <=========== Validate the token
+                                                                             <=========== Response
+                Listen Music                 <<<================================                                                
+
+      JWT Token : Very similar to bearer token along with headers and payload we will have signature (digitally signed token)
+        URL : jwt.io
+
+📌 Password encoder : bay64encoder site
+
+
+📌 Implementation in Postman - POST & GET Lead Without Global Variable [Salesforce]
+📌 5.30 PM - [Practice] Create Opportunity & Get Opportunity
+📌 Implementation in Postman - POST & GET Lead With Global Variable
+📌 6.15 PM - [Practice] Create Opportunity & Get Opportunity
+

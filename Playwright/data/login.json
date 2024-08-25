@@ -1,0 +1,11 @@
+[{
+    "SF_URL" : "https://login.salesforce.com/",
+    "SF_USER_NAME" : "ramya@testleaf.com",
+    "SF_PASSWORD" : "Password@1"
+},
+{
+    "SF_URL" : "https://login.salesforce.com/",
+    "SF_USER_NAME" : "ramya1@testleaf.com",
+    "SF_PASSWORD" : "Password@1"
+}
+]

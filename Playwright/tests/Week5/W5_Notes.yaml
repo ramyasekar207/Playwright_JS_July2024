@@ -65,10 +65,64 @@ Methods to access iframe:
 =============================
 frame!.click("")
 
-
+===============
+Week5 : Day 10
+===============
 📌 Multiple Windows/Tabs
+    Windows Handling / Switching between the tabs
+    Approches:
+    *********
+  1. Const context1 = await browser.newContext();
+     const page1 = context1.newPage();
+                  (and)
+     Const context2 = await browser.newContext();
+     const page2 = context2.newPage();
+  2. page.on('popup')
+  3. context.waitforEvent("page")
+    3.1. Sequential approach
+      => create a prmise in ur code to tell that this will resolve into a 
+      new page
+        * const windowPromise = context.waitforEvent("page");
+      => Now perform the useraction which is suppose to open new window
+        * await page.locator("").click()
+      => Now wait for the promise to get completed ( for the promise you created in 
+        step 1)
+        * const window = await windowPromise
+      => Switch to the new windoe for performing further action
+        * window.bringToFront()
+    3.2. Concurrent/Parallel approach
+      => We have multiple promises , once all the promises were resolved it
+          resulted with single promise.
+          syntax : await Promise.all( [promise1, promise2])
+          eg: For multiple window handling
+          [nw1,nw2,nw3] = await Promise.all([
+          context.waitForEvent("page"),
+          context.waitForEvent("page"),
+          context.waitForEvent("page"),
+          page.click("#Open")
+          ])
+
+📌 For Each statement : 
+
+📌 Multiple windows handling : 
+
+📌 File Upload:
+***************
+ 1. SetInputFiles : Bypass the user interaction
+    => If we have a type as 'file' on the DOM, we can use setInputFile method
+    => Whe user wants to upload multiple file , we have a attribute called 'multiple accept'
+    by using it we can upload muliple files like (photo, video, file,ddoc, mp4)
+ 2. FileChooser : Dynamic & user mimic the user action
+      => If there is no file attribute or dynamic applciation then go with 
+         chooser
+      => 
+
+📌 File Download :
+****************
+
+📌 Reading Data from (.env file, .json file, .csv files) 
 📌 Shadow DOM
-📌 File Upload
-📌 File Download
+
+
 
 
