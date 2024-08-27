@@ -1,12 +1,89 @@
 
-📌 2.30 PM - Persistent Context
-📌 3.00 PM - Explicit Waits
-📌 3.30 PM - Trace Viewer & Video Capture
+📌 Persistent Context
+    * Persistent context for chrome is not working
+    * So use if we want to use persistent contect we can go with firefox
+📌 Explicit Waits
+    1.  page.waitForSelector  => acts as a explicit wait, 
+      * wait till element to be selected
+      eg. await page.waitForSelector("#Login")//Login button
+      await page.click("#Login");
+      * Actiontimeout is consider as a default wait time for 'WaitforSelector'
+      * If that was not specified, then it will consider 30 sec as a default timeout.
+
+    2. page.waitForTimeout(seconds)
+        page.waitForTimeout(5000)
+      * This will not be used as it is slow down the flow.
+
+    3. page.waitForNavigation(<url>) // as it is deprecated we can use page.waitForUrl()
+      * in performing the action, it will navigate to new URL 
+        in this case we use 'waitForNavigation()''
+    eg: await page.click('#Login')
+        await page.waitForNavigation(<url>)
+        await page.click('applauncher')
+
+    4. page.waitForUrl()
+
+    5. Page.waitForLoadState()
+        * load : when the page has fully loaded
+        => Page.waitForLoadState('load')
+        * domContentLoaded : 
+        => Page.waitForLoadState('domContentLoaded')
+            1. wait till the DOM Content loaded 
+                (if we have many images to load a particular page)
+            2. loads the dom along with the external resources(image)
+        * networkIdle :
+         => Page.waitForLoadState('networkIdle')
+            1. when we have a multiple network calls happening for a single action
+            like if we goto redbus.in and search action, it trigger multiple network signlas
+            has been passed, ill then we are waiting 
+  
+    6. page.waitForEvent('event')
+    7. page.waitForResponse()
+        await page.click('Submit')
+        page.waitForResponse(response => resposne.url().included('/api/data')
+                                    && resposne.status() ===201)
+
+    8. page.waitforRequest()
+        page.waitForRequest(response => request.url().included('/api/submit')
+                                    && resposne.method() ==='Post')
+        
+
+📌 Trace Viewer & Video Capture
+    //Start Tracing
+    const browserContext = await browser.newContext()
+    browserContext.tracing.start({screenshots:true, snapshot:true,
+    source:true})
+
+    //Stop Tracing
+    await browserContect.tracing.stop({path:'trace.zip'})
+
+    //trace.playwright.dev
+    * drag and drop the trace report generated
+
+    Screenshot : Entire page screen capture
+    Snapshot : screenshot of an particular element
 
 
-📌 4.45 PM - Test suite Structure
-📌 5.15 PM - Reporters
+📌 UI mode
+    in console if we type npx playwright test <>.spec.ts --ui
 
+📌 Video Capture
+    * Video record automatically only when we have a page fixtures
+    * If page fixtures are not used, we have to manually handle to record video
 
-📌 6.00 PM - Network Interception
-📌 6.30 PM - Wrap/Q&A
+   const browserContext = await browser.newContext({
+        recordVideo: {
+            dir: './videos/',
+            size: {width: 1080, height: 1200},
+        }
+    });
+
+📌 Reporters
+playwright.config.ts => 
+reporter => we have multiple reporters
+    * By default the reporter will be list
+    * https://playwright.dev/docs/test-reporters 
+
+📌 Test suite Structure
+📌 Network Interception
+📌 Wrap/Q&A

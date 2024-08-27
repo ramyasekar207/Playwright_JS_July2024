@@ -1,5 +1,4 @@
 import { defineConfig, devices } from '@playwright/test';
-import { format } from "date-fns";
 
 /**
  * Read environment variables from file.
@@ -11,27 +10,18 @@ import { format } from "date-fns";
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-let timestamp = format(new Date(),'dd_MMM_yyyy_mm_ss')
-// let timestamp = dateFormat(new Date(), "yyyy-mm-dd:HH:MM")
-// const directory = `./reporter/playwrightReport${timestamp}`
-const directory = `./reporter/TestReport${timestamp}`
 export default defineConfig({
-  timeout:200000,
   testDir: './tests',
-  // globalTimeout: 3000000,
-  expect: {
-    timeout:15*1000
-  },
   /* Run tests in files in parallel */
   fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
-  // forbidOnly:!!process.env.CI,
+  forbidOnly: !!process.env.CI,
   /* Retry on CI only */
-  retries: 0,
+  retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: 2 ,
+  workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['html', { outputFolder:directory,open: 'always' }]],
+  reporter: [['html', {open: 'always' }]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -43,22 +33,13 @@ export default defineConfig({
     video : 'on',
     screenshot : 'on',
     actionTimeout:100000,
-    // storageState:
-  
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'],
-        //To maximize the window
-        viewport:{
-          width: 1080,
-          height:750
-        }
-      },
-     
+      use: { ...devices['Desktop Chrome'] },
     },
 
     // {
@@ -99,7 +80,3 @@ export default defineConfig({
   //   reuseExistingServer: !process.env.CI,
   // },
 });
-function dateFormat(arg0: Date, arg1: string) {
-  throw new Error('Function not implemented.');
-}
-

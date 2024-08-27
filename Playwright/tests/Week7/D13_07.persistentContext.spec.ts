@@ -1,7 +1,7 @@
 import { chromium, test } from "@playwright/test";
 import LT_Details from "../../data/LeafTaps_login.json";
-test.use({storageState:"creds/leaftaps_Login_PC.json"})
 
+test.use({storageState:"creds/leaftaps_Login_PC.json"})
 test(`LeafTaps : Store the login details using SessionStorage`, async ({}) => {
 
     const userData = "./myUserDataDir"

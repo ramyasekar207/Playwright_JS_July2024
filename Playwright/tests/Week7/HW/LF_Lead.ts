@@ -1,31 +1,29 @@
-import { Locator, test  } from "@playwright/test";
-import { createLead } from "../Week7/HW/LF_Lead";
+import { chromium, Locator, test  } from "@playwright/test";
+import LT_User from "../../../data/LeafTaps/LT_login.json";
+let browser :any;
+let browserContext : any;
+let page :any;
 
-test(`Salesforce : Create Lead`, async ({page}) => {
 
-    await page.goto("http://leaftaps.com/opentaps/control/main");
-
-    //Enter Username
-    await page.getByLabel("Username").fill("demosalesmanager");
-
-    //Enter Password
-    // await page.getByText("Password").fill("crmsfa")
-    
-    //Using CSS
-    // await page.fill(".inputLogin",'crmsfa');
-
-    //Using Xpath 
-    
-    await page.fill("//input[@id='password']",'crmsfa');
-
-    
+async function LogintoLeafTaps() {
+    browser = await chromium.launch();
+    browserContext = await browser.newContext();
+    page = await browserContext.newPage();
+    await page.goto(LT_User.LT_URL);
+    await page.getByLabel("Username").fill(LT_User.LT_USER_NAME);
+    await page.getByText("Password").fill(LT_User.LT_PASSWORD);
     //Submit 
     page.click(".decorativeSubmit");
     await page.waitForTimeout(5000);
 
     //General Text - Syntax
     await page.locator("text=CRM/SFA").click();
+    return page;
+    
+}
+export{LogintoLeafTaps}
 
+async function createLead() {
     //GetByRole - Syntax
     await page.getByRole("link", {name:'Leads'}).click();
 
@@ -34,7 +32,7 @@ test(`Salesforce : Create Lead`, async ({page}) => {
 
     //Enter Lead Details
     const companyName = page.locator("#createLeadForm_companyName");
-    await companyName.fill("TestLeaf");
+    await companyName.fill("RBS");
 
     //Enter FirstName
     // await page.locator("[name='firstName']").fill("Ramya S");
@@ -55,7 +53,17 @@ test(`Salesforce : Create Lead`, async ({page}) => {
 
     //Get the status of the created Lead
     let status = await page.locator("#viewLead_statusId_sp").innerText();
-    console.log(`Status : ${status}`);   
-    
-})
+    console.log(`Status : ${status}`);  
 
+    let ID = await page.locator("#viewLead_companyName_sp").innerText();
+    let LeadID = ID.split("(");
+    let arr =LeadID[1].split(")");
+    
+    return {
+        Lead_ID : arr[0]
+    }
+    
+}
+
+
+export{createLead}

@@ -41,5 +41,7 @@
 
 
 ScreenToast :
-//Command
+
+
+📌Command to freeze the page
 setTimeout(function(){debugger;},5000);

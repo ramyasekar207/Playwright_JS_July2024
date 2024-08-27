@@ -1,0 +1,20 @@
+{
+    "userLogin" : 
+    {
+    "url" : "https://login.salesforce.com/",
+    "username" : "ramya@testleaf.com",
+    "password" : "Password@1"
+    },
+    "home_url" : "https://rbs2-dev-ed.develop.lightning.force.com/lightning/r/",
+    "create_Account" : 
+    {
+        "acc_Name" : "R_Playwright_Acc"
+    },
+    "Create_Opportunity":
+    {
+            "name" : "Opportunity: JSON file",
+            "stageName" : "Prospecting",
+            "closeDate" : "2024-12-31"
+    }
+
+}
