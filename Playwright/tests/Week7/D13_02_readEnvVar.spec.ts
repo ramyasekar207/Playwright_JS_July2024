@@ -5,7 +5,7 @@ dotenv.config();
 test(`Salesforce : Test to read the data from env file`, async ({page,context}) => {
 
     /**Login to Salesforce**/
-const sf_url = process.env.SF_URL as string;
+const sf_url = process.env.SF_URL as string; //if not stored as string in env file, convert it as tring here
 const sf_username = process.env.SF_USER_NAME;
 const sf_password = process.env.SF_PASSWORD;
 await page.goto(sf_url);

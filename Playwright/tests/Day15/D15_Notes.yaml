@@ -1,0 +1,169 @@
+
+📆 [31 August, Saturday]
+📝 
+📌 2.30 PM - Class & Objects
+  Class : 
+  * Collection of Objects.
+  * Its kind of plan or blueprint or Template for creating a new objects.
+  * when we defining a class, no memory has been allocated until the object has been created.
+
+  method: 
+  * define structure and behavior (attributes and methods)
+  * method which is defined within a class is definesd as method, and which is dependent on the class
+    
+  class browser {
+  browserType; //attributes
+  browserContext;
+  page;
+  url;
+
+  public void navigateToUrl() //method within class
+  {
+    log("Navigate");
+  }
+
+  public void clickElement() //method within class
+  {
+    click element;
+  }
+  }
+
+    
+
+  
+  function:
+  //declared a function outside the class 
+  async function clickModule { //Function declaration and which is independent
+  }
+    
+  Object : 
+  * object is a instance or variant of a class
+  * using this property 
+  eg: car is a class and blue is a variant of the class
+  * How to create an object: 
+      'New' keyword is used to create an object.
+      * Object has been created outside the class.
+      * Creation : 
+      Syntax : const/let <Object Name> = new <Constructor>();
+      const browser = new Browser();
+      browser.browserType = "Chrome";
+      browser.navigateToUrl();
+
+📌 Constructor : 
+  * Constructor code execute initially before the code in the class.
+  * Constructor is a special method is used for initializing the newly created object.
+  * primary state of a Constructor is going to initialize the newly created object.
+
+with and without constructor : oops.ts
+📌 How to run a ts method :
+  * tsc <methodName>.ts
+  Then
+  * node <methodName>.js
+
+📌 Access Modifiers : 
+  * to set the scope of visibility/accessibility using access moifier.
+  * Keywords used to set the accessibility of classes, methods and properties.
+    Keywords:
+    1. public : if access modifier has not been specified then bydefault is will 'public' as access modifier.
+        * we can access the class/method/property from anywhere.
+    2. private : 
+     * Accessible to the inside the defined class alone.
+     * Even the sub-class cannot access the private members.
+     syntax: 
+        class Browser{
+        private browserType;
+        }
+
+    3. protected: 
+    * within the class and by any class that extends (inherits from)
+    * but it cannot access outside the class
+
+ 
+📌 OOPs Principles [Inheritance/Abstraction/Polymorphism]
+  📌 Encapsulation : 
+      * Binding of data and methods together 
+      * Its a way to organize and control access to the data and behavior of an object.
+      Eg: Wrapper Methods :Customise methoda that created to hide the complex logic behind it.
+
+      class PageActions { 
+      private page;
+      
+      constructor(page) {
+      this.page = page; }
+      
+      public clickElement(selector:string){
+      this.page.hover(selector);
+      this.page.waitForVisibility();
+      this.page.click(selector);  }  }
+
+      Class extends the parent class : 
+      class Chatter extends PageActions { 
+
+      public clickAppLauncher() {
+      this.page.clickElement("<Locator>"); }  }
+
+
+      //Getter method to access the private browsername Property
+      public getbrowserName(){
+      return this.browserName;
+      }
+
+      //Setter method to modify the private prop
+      public setBrowsername(newName) {
+      if
+      }
+      const name = new Browser("Chrome");
+      log(name.getBrowsername());
+
+      name.setBrowsername("Firefox");
+
+  📌 Inheritence : 
+      Inherit the methods and properties from the parent class.
+      1. Single inheritence (Class inheris from single class)
+      2. Muti-level inheritence 
+        2.1. a class is derived from another class, which is itself derived from another class (Chain of inheritance)
+        eg: Dashboard extends LoginPage extends BasePage
+      3. Hierarchial inheritance
+        3.1. Multiple classes inherits from a single parent class.
+         LeafTaps app: 
+         Base Page ( Have common methods)         
+         Home Page extends BasePage
+         Login Page extends BasePage
+         Leads Page extends BasePage
+         Create Lead Page 
+         Edit Lead
+      4.Multiple Inheritance : multiple inheritence is not possible in class level but we can achieve it via interface concepts
+      
+  📌 Polymorphism :
+        More than one or multiple forms of action/performance 
+        1. Compile time polymorphism : 
+          Static polymorphism or Method overloaded : 
+            1.1.Method OverLoading : It will allow a class to have multiple methods with same name with different parameters/properties
+              * in typescript For method overloading, we have single implementation of the function 
+        2. Run time polymorphism : 
+          Dynamic polymorphism or Method overriding : 
+  📌 Abstraction :
+      * Hiding the details or complexicity of the code
+      * user can only see the interfaces
+      1.1. Abstract class --> Partial abstraction
+      1.2. Interface --> 100% abstract can achieve in interface
+
+  📌For Abstract and interface, object creation is not possible
+
+      syntax : 
+      abstract class BasePage{
+      protected page ;
+      constrcutor (page)
+      {
+        this.page = page;
+      }
+      abstract 
+      }
+
+
+
+
+📌 Introduction to Page Object Model
+📌 Design Base Page
+📌 Implement Wrapper Methods
+

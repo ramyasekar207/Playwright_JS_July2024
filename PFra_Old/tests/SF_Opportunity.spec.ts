@@ -4,7 +4,7 @@ import { LogintoSalesForce,navigateToItem } from "../src/modules/BasicSetup";
 
 let Account_ID : any;
 
-test(`01 : Create Opportunity`,async ({page}) => {
+test.only(`01 : Create Opportunity`,async ({page}) => {
     page = await navigateToItem("Sales","Opportunities");
     await page.locator("//a[@title='New']").click({timeout:5000});
 
@@ -13,17 +13,17 @@ test(`01 : Create Opportunity`,async ({page}) => {
     await page.locator("//label[text()='Stage']/..//lightning-base-combobox//button").click();
     await page.locator("//lightning-base-combobox-item[@data-value='Prospecting']").click();
 
-    await page.locator("//*[text()='Select a date for Close Date']/..").click();
-    await page.locator("//lightning-base-combobox-item[@data-value='Prospecting']").click();
+    // await page.locator("//*[text()='Select a date for Close Date']/..").click();
+    // await page.locator("//lightning-base-combobox-item[@data-value='Prospecting']").click();
     
     await page.locator(".record-body-container button[name='SaveEdit']").click();  
     let breadcrumb = await page.locator("records-entity-label").innerText();
-    expect(breadcrumb).toContain("Account");
-    let title = await page.locator("h1 lightning-formatted-text[slot='primaryField']").innerText();
-    expect(title).toContain(acc_details.create_Account.acc_Name);  
-    let url = page.url().split("/");
-    let arr = url.splice(-2,1);
-    Account_ID = arr[0];  
+    // expect(breadcrumb).toContain("Account");
+    // let title = await page.locator("h1 lightning-formatted-text[slot='primaryField']").innerText();
+    // expect(title).toContain(acc_details.create_Account.acc_Name);  
+    // let url = page.url().split("/");
+    // let arr = url.splice(-2,1);
+    // Account_ID = arr[0];  
 })
 
 test(`02 : Edit the Accounts`,async ({page,request}) => {

@@ -1,5 +1,5 @@
 import { chromium, test } from "@playwright/test";
-import LT_Details from "../../data/LeafTaps_login.json";
+import LT_Details from "../../data/LeafTaps/LT_login.json";
 
 test.use({storageState:"creds/leaftaps_Login_PC.json"})
 test(`LeafTaps : Store the login details using SessionStorage`, async ({}) => {
@@ -70,8 +70,6 @@ test.only(`01_LeafTaps : PersistentContext : Store data context`, async ({}) => 
     await page.getByRole("link",{name:"Create Lead"}).click();
 
 })
-
-
 test(`02_LeafGround : PersistentContext : Store data context`, async ({}) => {
     const userData = "./myUserDataDir"
     const context = await chromium.launchPersistentContext(userData,{
@@ -79,7 +77,7 @@ test(`02_LeafGround : PersistentContext : Store data context`, async ({}) => {
         permissions:[
         'camera','notifications', 'geolocation'         
         ],
-        //executablePath:"",//Local chrome path 
+        //executablePath:"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",//Local chrome path 
         httpCredentials:{
             username : "admin",
             password : "testleaf"

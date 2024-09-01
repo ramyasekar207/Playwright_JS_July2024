@@ -1,0 +1,120 @@
+📆 [01 September, Sunday]
+
+📌 Playwright Test Methods : 
+  * test.only
+  * test.describe
+  * test.skip
+
+📌 Hooks : 
+  * test.beforeAll : run once before all tests in a file
+    test.beforeAll(async () => {
+    setup global resource like database connection,
+    API mocking
+    })
+
+  * test.beforeEach : runs before each test
+    test.beforeEach(async () => {
+    url
+    username
+    password
+    login
+    })
+
+  * test.afterEach : runs after each test
+    test.aafterEach(async () => {
+    close browser
+    })
+
+  * test.afterAll: run once after all tests in a file
+    test.afterAll(async () => {
+    close DB Connection
+    })
+
+  * Focus a particular test : test.only
+  * skip a particular test : test.skip
+    test() { 
+    test.skip(name == 'firefox')
+    }
+  * Group a test together : test.describe(`Regression suite`,() => {
+  test(`Loagin){}
+  test(`Ordering the product)
+  })
+
+  * test.describe.configure({})
+  * test.describe.only()
+  
+  * test.describe.fixme()
+  * test.fixme  = > it will not be executed , this wil not assign any workers 
+                    and it will not pick for test execution.
+  
+  * test.fail() => if it is passed it will generate the report that it 
+                  should faile but it is passing now.
+  * test.describe.fail()
+
+  * test.setTimeout(240000) => time to run
+  * test.use
+  * test.slow() => used to slow the run of the testcase
+  * test.info()
+  * test.extend()
+  * test.step
+ 
+📌 Device Emulation
+  * using the different mobile device emulation, using chrome we 
+    tried to execute the action steps
+  
+📌 Console Logs
+  * For debugging function, we used to go with console - developer tool
+
+📌 Geolocation
+  * we can change the geolocation or set the location 
+  refer the testcase
+
+📌 Introduction to Page Object Model   
+📌 Best Practices
+    ** To Designing Automation framework
+    1. Modularity and reusability
+    2. Parameterization & data driven testing
+    3. Scalability & Parallel Execution
+    4. Error handling and logging
+    5. Reporting and test results analysis
+    6. Cross browser & cross platform testing
+
+📌 Frmework Structure:
+    constants
+      env constants
+    API
+    Auth : SessionSorage/Persistent
+    custome reports (allure-reports)
+    custom-fixture
+    node_module
+    test-results
+    playwright-report
+    pages
+    tests
+      <spec.ts> files
+    data-utility
+      csv
+      env
+      json
+      excel
+      faker
+    utils
+      playwrightWrapper
+      retry Logic
+    package.json
+    playwright.config.ts
+    ts.config
+    README.md
+
+
+📌 Design Base Page
+
+📌 Implement Wrapper Methods
+📌 Custom Fixtures
+📌 Wrap/Q&A
+📌 PDF vaidation : Ajay may help to get the code
+
+
+
+Notes : 
+To run a test against tags : npx playwright test <> --grep "@smoke"
